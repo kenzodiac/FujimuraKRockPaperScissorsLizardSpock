@@ -27,6 +27,15 @@ let play1Score = document.getElementById("play1Score");
 let play2Title = document.getElementById("play2Title");
 let play2Score = document.getElementById("play2Score");
 
+let winnerAnnounce = document.getElementById("winnerAnnounce");
+let winnerTxt = document.getElementById("winnerTxt");
+
+let playAgainTxt = document.getElementById("playAgainTxt");
+let playAgainBtns = document.getElementById("playAgainBtns");
+let playAgainYesBtn = document.getElementById("playAgainYesBtn");
+let playAgainNoBtn = document.getElementById("playAgainNoBtn");
+
+
 
 //variable that counts the number of rounds
 let roundNumber = 0;
@@ -56,12 +65,7 @@ let ainame = "AI";
 //home buttons
 homeBtn.addEventListener("click", function(){
     HideStuff("reset");
-    roundNumber = 0;
-    modeVar = "";
-    roundVar = 0;
-    p1ScoreCount = 0;
-    p2ScoreCount = 0;
-    aiScoreCount = 0;
+    ResetVariables("hard");
 });
 
 rulesBtn.addEventListener("click", function(){
@@ -86,16 +90,19 @@ twoPlayerBtn.addEventListener("click", function(){
 bestOf1Btn.addEventListener("click", function(){
     HideStuff("lengthSelect");
     roundVar = 1;
+    CallAiApi();
 });
 
 bestOf5Btn.addEventListener("click", function(){
     HideStuff("lengthSelect");
     roundVar = 5;
+    CallAiApi();
 });
 
 bestOf7Btn.addEventListener("click", function(){
     HideStuff("lengthSelect");  
     roundVar = 7;
+    CallAiApi();
 });
 
 //options select buttons
@@ -103,30 +110,46 @@ rockBtn.addEventListener("click", function(){
     roundNumber++;
     ResolveChoice("rock");
     ResolveRoundWinner();
+    WinnerCheck();
 });
 
 paperBtn.addEventListener("click", function(){
     roundNumber++;
     ResolveChoice("paper");
     ResolveRoundWinner();
+    WinnerCheck();
 });
 
 scissorsBtn.addEventListener("click", function(){
     roundNumber++;
     ResolveChoice("scissors");
     ResolveRoundWinner();
+    WinnerCheck();
 });
 
 lizardBtn.addEventListener("click", function(){
     roundNumber++;
     ResolveChoice("lizard");
     ResolveRoundWinner();
+    WinnerCheck();
 });
 
 spockBtn.addEventListener("click", function(){
     roundNumber++;
     ResolveChoice("spock");
     ResolveRoundWinner();
+    WinnerCheck();
+});
+
+//play again buttons
+playAgainYesBtn.addEventListener("click", function(){
+    HideStuff("playAgain");
+    ResetVariables("soft");
+});
+
+playAgainNoBtn.addEventListener("click", function(){
+    HideStuff("reset");
+    ResetVariables("hard");
 });
 
 
@@ -146,6 +169,23 @@ function HideStuff(btn){
         rpslsInputs.classList.add("hide-element");
         outputArea.classList.add("hide-element");
         scoreBoard.classList.add("hide-element");
+        winnerAnnounce.classList.add("hide-element");
+        playAgainTxt.classList.add("hide-element");
+        playAgainBtns.classList.add("hide-element");
+    } else if (btn == "gameEnd"){
+        rpslsInputs.classList.add("hide-element");
+        outputArea.classList.add("hide-element");
+        scoreBoard.classList.add("hide-element");
+        winnerAnnounce.classList.remove("hide-element");
+        playAgainTxt.classList.remove("hide-element");
+        playAgainBtns.classList.remove("hide-element");
+    } else if (btn == "playAgain"){
+        rpslsInputs.classList.remove("hide-element");
+        outputArea.classList.remove("hide-element");
+        scoreBoard.classList.remove("hide-element");
+        winnerAnnounce.classList.add("hide-element");
+        playAgainTxt.classList.add("hide-element");
+        playAgainBtns.classList.add("hide-element");
     }
 }
 
@@ -268,8 +308,66 @@ function ResolveRoundWinner(){
             console.log("player 1 score: " + p1ScoreCount + "; player 2 score: " + p2ScoreCount);
         }
     }
+    play1Score.textContent = p1ScoreCount + " pts";
+    if (modeVar == "vsComp"){
+        play2Score.textContent = aiScoreCount + " pts";
+    } else if (modeVar == ""){
+        play2Score.textContent = p2ScoreCount + " pts";
+    }
 }
 
 function WinnerCheck(){
+    if (roundVar == 1){
+        if (p1ScoreCount == 1){
+            HideStuff("gameEnd");
+            winnerTxt.textContent = p1name + " Wins!";
+        } else if (p2ScoreCount == 1){
+            HideStuff("gameEnd");
+            winnerTxt.textContent = p2name + " Wins!";
+        } else if (aiScoreCount == 1){
+            HideStuff("gameEnd");
+            winnerTxt.textContent = ainame + " Wins!";
+        }
+    } else if (roundVar == 5){
+        if (p1ScoreCount == 3){
+            HideStuff("gameEnd");
+            winnerTxt.textContent = p1name + " Wins!";
+        } else if (p2ScoreCount == 3){
+            HideStuff("gameEnd");
+            winnerTxt.textContent = p2name + " Wins!";
+        } else if (aiScoreCount == 3){
+            HideStuff("gameEnd");
+            winnerTxt.textContent = ainame + " Wins!";
+        }
+    } else if (roundVar == 7){
+        if (p1ScoreCount == 4){
+            HideStuff("gameEnd");
+            winnerTxt.textContent = p1name + " Wins!";
+        } else if (p2ScoreCount == 4){
+            HideStuff("gameEnd");
+            winnerTxt.textContent = p2name + " Wins!";
+        } else if (aiScoreCount == 4){
+            HideStuff("gameEnd");
+            winnerTxt.textContent = ainame + " Wins!";
+        }
+    }
+}
 
+function ResetVariables(type){
+    if (type == "hard"){
+        modeVar = "";
+        roundVar = 0;
+        p1name = "Player 1";
+        p2name = "Player 2";
+        ainame = "AI";
+    }
+    roundNumber = 0;
+    p1ScoreCount = 0;
+    p2ScoreCount = 0;
+    aiScoreCount = 0;
+    p1Choice = "";
+    p2Choice = "";
+    aiChoice = "";
+    play1Score.textContent = "0 pts";
+    play2Score.textContent = "0 pts";
 }
