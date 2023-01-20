@@ -100,6 +100,7 @@ bestOf1Btn.addEventListener("click", function(){
     roundVar = 1;
     CallAiApi();
     DescriptiveTxt("beginGame");
+    UpdateScoreBoard();
 });
 
 bestOf5Btn.addEventListener("click", function(){
@@ -107,6 +108,7 @@ bestOf5Btn.addEventListener("click", function(){
     roundVar = 5;
     CallAiApi();
     DescriptiveTxt("beginGame");
+    UpdateScoreBoard();
 });
 
 bestOf7Btn.addEventListener("click", function(){
@@ -114,6 +116,7 @@ bestOf7Btn.addEventListener("click", function(){
     roundVar = 7;
     CallAiApi();
     DescriptiveTxt("beginGame");
+    UpdateScoreBoard();
 });
 
 //options select buttons
@@ -319,11 +322,15 @@ function ResolveRoundWinner(){
             console.log("player 1 score: " + p1ScoreCount + "; player 2 score: " + p2ScoreCount);
         }
     }
-    play1Score.textContent = p1ScoreCount + " pts";
+    UpdateScoreBoard();
+}
+
+function UpdateScoreBoard(){
+    play1Score.textContent = p1ScoreCount + "/" + (Math.ceil(roundVar/2)) + " pts";
     if (modeVar == "vsComp"){
-        play2Score.textContent = aiScoreCount + " pts";
+        play2Score.textContent = aiScoreCount + "/" + (Math.ceil(roundVar/2)) + " pts";
     } else if (modeVar == "vs2p"){
-        play2Score.textContent = p2ScoreCount + " pts";
+        play2Score.textContent = p2ScoreCount + "/" + (Math.ceil(roundVar/2)) + " pts";
     }
 }
 
@@ -382,9 +389,6 @@ function ResetVariables(type){
         ainame = "AI";
         descriptiveTxt.textContent = "Select a game mode";
     }
-    if (type == "soft"){
-        descriptiveTxt.textContent = "Highly logical. \"" + p1name + "\" select one of the five options above";
-    }
     roundNumber = 0;
     p1ScoreCount = 0;
     p2ScoreCount = 0;
@@ -392,9 +396,11 @@ function ResetVariables(type){
     p1Choice = "";
     p2Choice = "";
     aiChoice = "";
-    play1Score.textContent = "0 pts";
-    play2Score.textContent = "0 pts";
     gameOver = false;
+    if (type == "soft"){
+        descriptiveTxt.textContent = "Highly logical. \"" + p1name + "\" select one of the five options above";
+        UpdateScoreBoard();
+    }
 }
 
 function DescriptiveTxt(situaiton){
