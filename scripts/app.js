@@ -164,6 +164,7 @@ spockBtn.addEventListener("click", function(){
 playAgainYesBtn.addEventListener("click", function(){
     HideStuff("playAgain");
     ResetVariables("soft");
+    CallAiApi();
 });
 
 playAgainNoBtn.addEventListener("click", function(){
