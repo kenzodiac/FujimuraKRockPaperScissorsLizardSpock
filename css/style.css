@@ -22,13 +22,14 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
-    height: 1080px;
-    width: 1920px;
+    width: 100%;
+    height: auto;
 }
 
 a:link{
     text-decoration: none;
     color: white;
+    transition: transform .1s;
 }
 
 a:visited{
@@ -38,6 +39,7 @@ a:visited{
 
 a:hover{
     text-decoration: underline;
+    transform: scale(1.05);
 }
 
 .hide-element{
@@ -68,6 +70,41 @@ a:hover{
     font-size: 60px;
     letter-spacing: .2em;
     margin-top: 48px;
+}
+
+.modal-content{
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.modal-title{
+    font-family: StarTrek;
+    letter-spacing: .2em;
+    font-size: 3rem!important;
+}
+
+.modal-body{
+    font-family: Beijing;
+    font-size: 1.5rem;
+}
+
+.rockSpan{
+    color: red;
+}
+
+.paperSpan{
+
+}
+
+.scissorsSpan{
+    color: goldenrod;
+}
+
+.lizardSpan{
+    color: olivedrab;
+}
+
+.spockSpan{
+    color: blue;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~ Mode Select ~~~~~~~~~~~~~~~~~~~ */
@@ -205,4 +242,16 @@ a:hover{
     justify-content: center;
     font-family: Beijing;
     font-size: 2rem;
+}
+
+/* ~~~~~~~~~~~~~~~~~~~ Footer Area ~~~~~~~~~~~~~~~~~~~ */
+.footerArea{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-family: StarTrek;
+    letter-spacing: .2em;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
