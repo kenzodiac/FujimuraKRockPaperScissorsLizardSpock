@@ -9,132 +9,143 @@
     <link rel="stylesheet" href="./css/style.css">
   </head>
   <body>
-    
-    <a id="homeBtn" href="#"><h3>Home</h3></a>
-    <h1>Rock Paper Scissors Lizard Spock</h1>
-    <a id="rulesBtn" href="#"><h3>Rules</h3></a>
+    <div class="header container-fluid" style="margin-top: 27px;">
+        <a id="homeBtn" class="front-pg-btns" href="#">
+            <img class="header-btns" src="./assets/images/command-delta.png" alt="Home Button; image is of a Starfleet Delta, Command Division, from The Original Series">
+            <div class="text-center home-rules">Home</div>
+        </a>
+        <div class="main-title">Rock Paper Scissors Lizard Spock</div>
+        <a id="rulesBtn" class="front-pg-btns" href="#">
+            <img class="header-btns" src="./assets/images/science-delta.png" alt="Rules Button; image is of a Starfleet Delta, Science Division, from The Original Series">
+            <div class="text-center home-rules">Rules</div>
+        </a>    
+    </div>
 
     <div id="mainStage" class="container-fluid">
         
         <!-- Main Menu/Mode Select -->
-        <div id="modeSelect" class="row">
-            <div class="col">
+        <div id="modeSelect" class="row modeSelectArea">
+            <div class="col-4">
                 <div id="twoPlayerBtn">
-                    <a href="#">
-                        <img src="...">
-                        <h4>Vs Player</h4>
+                    <a class="front-pg-btns" href="#">
+                        <img class="front-pg-opt two-player" src="./assets/images/2player.png">
+                        <div class="option-txt">2-Player</div>
                     </a>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <div>
-                    <a href="#" id="vsCompBtn">
-                        <img src="...">
-                        <h4>Vs Computer</h4>
+                    <a class="front-pg-btns" href="#" id="vsCompBtn">
+                        <img class="front-pg-opt vsAi" src="./assets/images/data.png">
+                        <div class="option-txt">Vs Computer</div>
                     </a>
                 </div>
             </div>
         </div>
 
         <!-- Game Length Select -->
-        <div id="lengthSelect" class="row hide-element">
-            <div class="col">
+        <div id="lengthSelect" class="row lengthSelectArea hide-element justify-content-center">
+            <div class="col-3 justify-content-cente text-center">
                 <div>
                     <a id="bestOf1Btn" href="#">
-                        <h5>&#9757;<br>
-                        Best of 1</h5>
+                        <div class="best-of-style">Best of</div>
+                        <div class="roman-numeral-style">I</div>
                     </a>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-3 justify-content-center text-center">
                 <div>
                     <a id="bestOf5Btn" href="#">
-                        <h5>&#9995;<br>
-                        Best of 5</h5>
+                        <div class="best-of-style">Best of</div>
+                        <div class="roman-numeral-style">V</div>
                     </a>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-3 justify-content-center text-center">
                 <div>
                     <a id="bestOf7Btn" href="#">
-                        <h5>&#9995;&#9996;<br>
-                        Best of 7</h5>
+                        <div class="best-of-style">Best of</div>
+                        <div class="roman-numeral-style">VII</div>
                     </a>
                 </div>
             </div>
         </div>
 
         <!-- Game Inputs -->
-        <div id="rpslsInputs" class="row hide-element">
-            <div class="col">
-                <a id="rockBtn" href="#">
-                    <img src="">
-                    <h5>&#129704; Rock</h5>
+        <div id="rpslsInputs" class="row actionSelectionArea hide-element">
+            <div class="col-2 d-flex justify-content-center text-center">
+                <a id="rockBtn" class="rockPic" href="#">
+                    <img class="choicePics rockPic" style="align-self: center;" src="./assets/images/rock.png">
+                    <div class="selectionSubtitle">Rock</div>
                 </a>
             </div>
-            <div class="col">
-                <a id="paperBtn" href="#">
-                    <img src="">
-                    <h5>&#128221; Paper</h5>
+            <div class="col-2 d-flex justify-content-center text-center">
+                <a id="paperBtn" class="paperPic" href="#">
+                    <img class="choicePics" src="./assets/images/paper.png">
+                    <div class="selectionSubtitle">Paper</div>
                 </a>
             </div>
-            <div class="col">
+            <div class="col-2 d-flex justify-content-center text-center">
                 <a id="scissorsBtn" href="#">
-                    <img src="">
-                    <h5>&#9986; Scissors</h5>
+                    <img class="choicePics scissorsPic" src="./assets/images/scissors.png">
+                    <div class="selectionSubtitle">Scissors</div>
                 </a>
             </div>
-            <div class="col">
+            <div class="col-2 d-flex justify-content-center text-center">
                 <a id="lizardBtn" href="#">
-                    <img src="">
-                    <h5>&#129422; Lizard</h5>
+                    <img class="choicePics lizardPic" src="./assets/images/lizard.png">
+                    <div class="selectionSubtitle">Lizard</div>
                 </a>
             </div>
-            <div class="col">
+            <div class="col-2 d-flex justify-content-center text-center">
                 <a id="spockBtn" href="#">
-                    <img src="">
-                    <h5>&#128406; Spock</h5>
+                    <img class="choicePics spockPic" src="./assets/images/spock.png">
+                    <div class="selectionSubtitle">Spock</div>
                 </a>
             </div>
         </div>
 
         <!-- Output Text Area -->
-        <div id="outputArea" class="row hide-element">
-            <div class="col">
-                <h2>Descriptive Game Text Goes Here</h2>
+        <div id="outputArea" class="row">
+            <div id="descriptiveTxt" class="col text-center">
+                Select a game mode
             </div>
         </div>
 
         <!-- Scoreboard Area -->
-        <div id="scoreBoard" class="row hide-element">
-            <div id="play1Title" class="col">
+        <div id="scoreBoard" class="row scoreBoardArea hide-element">
+            <div id="play1Title" class="col-1 text-end">
                 Player 1:
             </div>
-            <div id="play1Score" class="col">
+            <div id="play1Score" class="col-1">
                 0 pts
             </div>
-            <div id="play2Title" class="col">
+            <div id="play2Title" class="col-1 text-end">
                 Player 2:
             </div>
-            <div id="play2Score" class="col">
+            <div id="play2Score" class="col-1">
                 0 pts
             </div>
         </div>
 
         <!-- Winner Annoucement Area-->
-        <div id="winnerAnnounce" class="row hide-element">
+        <div id="winnerAnnounce" class="row winner text-center hide-element">
             <div id="winnerTxt" class="col">
                 {Winner Announced Here}
             </div>
         </div>
 
         <!-- Play Again Buttons Area -->
-        <div id="playAgainTxt" class="row hide-element">Play Again?</div>
-        <div id="playAgainBtns" class="row hide-element">
-            <div class="col">
+        <div id="playAgainTxt" class="row playAgain text-center hide-element">
+            <div class="col text-center">
+                Play Again?
+            </div>
+        </div>
+        <div id="playAgainBtns" class="row yesNo hide-element">
+            <div class="col-1 text-center">
                 <a id="playAgainYesBtn" href="#">Yes</a>
             </div>
-            <div class="col">
+            <div class="col-1 text-center">
                 <a id="playAgainNoBtn" href="#">No</a>
             </div>
         </div>

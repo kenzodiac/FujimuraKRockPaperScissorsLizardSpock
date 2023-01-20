@@ -21,6 +21,8 @@ let lizardBtn = document.getElementById("lizardBtn");
 let spockBtn = document.getElementById("spockBtn");
 
 let outputArea = document.getElementById("outputArea");
+let descriptiveTxt = document.getElementById("descriptiveTxt");
+
 let scoreBoard = document.getElementById("scoreBoard");
 let play1Title = document.getElementById("play1Title");
 let play1Score = document.getElementById("play1Score");
@@ -61,11 +63,15 @@ let p1name = "Player 1";
 let p2name = "Player 2";
 let ainame = "AI";
 
+//variable that checks if game is over
+let gameOver = false;
+
 //event listeners that determine button behaviors
 //home buttons
 homeBtn.addEventListener("click", function(){
     HideStuff("reset");
     ResetVariables("hard");
+    DescriptiveTxt("homeBtn");
 });
 
 rulesBtn.addEventListener("click", function(){
@@ -77,6 +83,7 @@ vsCompBtn.addEventListener("click", function(){
     modeVar = "vsComp";
     play1Title.textContent = p1name + ":";
     play2Title.textContent = ainame + ":";
+    DescriptiveTxt("modeSelectBtn");
 });
 
 twoPlayerBtn.addEventListener("click", function(){
@@ -84,6 +91,7 @@ twoPlayerBtn.addEventListener("click", function(){
     modeVar = "vs2p";
     play1Title.textContent = p1name + ":";
     play2Title.textContent = p2name + ":";
+    DescriptiveTxt("modeSelectBtn");
 });
 
 //rounds select buttons
@@ -91,18 +99,21 @@ bestOf1Btn.addEventListener("click", function(){
     HideStuff("lengthSelect");
     roundVar = 1;
     CallAiApi();
+    DescriptiveTxt("beginGame");
 });
 
 bestOf5Btn.addEventListener("click", function(){
     HideStuff("lengthSelect");
     roundVar = 5;
     CallAiApi();
+    DescriptiveTxt("beginGame");
 });
 
 bestOf7Btn.addEventListener("click", function(){
     HideStuff("lengthSelect");  
     roundVar = 7;
     CallAiApi();
+    DescriptiveTxt("beginGame");
 });
 
 //options select buttons
@@ -111,6 +122,7 @@ rockBtn.addEventListener("click", function(){
     ResolveChoice("rock");
     ResolveRoundWinner();
     WinnerCheck();
+    DescriptiveTxt("optionBtn");
 });
 
 paperBtn.addEventListener("click", function(){
@@ -118,6 +130,7 @@ paperBtn.addEventListener("click", function(){
     ResolveChoice("paper");
     ResolveRoundWinner();
     WinnerCheck();
+    DescriptiveTxt("optionBtn");
 });
 
 scissorsBtn.addEventListener("click", function(){
@@ -125,6 +138,7 @@ scissorsBtn.addEventListener("click", function(){
     ResolveChoice("scissors");
     ResolveRoundWinner();
     WinnerCheck();
+    DescriptiveTxt("optionBtn");
 });
 
 lizardBtn.addEventListener("click", function(){
@@ -132,6 +146,7 @@ lizardBtn.addEventListener("click", function(){
     ResolveChoice("lizard");
     ResolveRoundWinner();
     WinnerCheck();
+    DescriptiveTxt("optionBtn");
 });
 
 spockBtn.addEventListener("click", function(){
@@ -139,6 +154,7 @@ spockBtn.addEventListener("click", function(){
     ResolveChoice("spock");
     ResolveRoundWinner();
     WinnerCheck();
+    DescriptiveTxt("optionBtn");
 });
 
 //play again buttons
@@ -161,28 +177,22 @@ function HideStuff(btn){
     } else if (btn == "lengthSelect"){
         lengthSelect.classList.add("hide-element");
         rpslsInputs.classList.remove("hide-element");
-        outputArea.classList.remove("hide-element");
         scoreBoard.classList.remove("hide-element");
     } else if (btn == "reset"){
         modeSelect.classList.remove("hide-element");
         lengthSelect.classList.add("hide-element");
         rpslsInputs.classList.add("hide-element");
-        outputArea.classList.add("hide-element");
         scoreBoard.classList.add("hide-element");
         winnerAnnounce.classList.add("hide-element");
         playAgainTxt.classList.add("hide-element");
         playAgainBtns.classList.add("hide-element");
     } else if (btn == "gameEnd"){
         rpslsInputs.classList.add("hide-element");
-        outputArea.classList.add("hide-element");
-        scoreBoard.classList.add("hide-element");
         winnerAnnounce.classList.remove("hide-element");
         playAgainTxt.classList.remove("hide-element");
         playAgainBtns.classList.remove("hide-element");
     } else if (btn == "playAgain"){
         rpslsInputs.classList.remove("hide-element");
-        outputArea.classList.remove("hide-element");
-        scoreBoard.classList.remove("hide-element");
         winnerAnnounce.classList.add("hide-element");
         playAgainTxt.classList.add("hide-element");
         playAgainBtns.classList.add("hide-element");
@@ -222,6 +232,7 @@ function ResolveRoundWinner(){
         if (p1Choice == "rock"){
             if (aiChoice == "scissors" || aiChoice == "lizard"){
                 p1ScoreCount++;
+                
             } else if (aiChoice == "paper" || aiChoice == "spock"){
                 aiScoreCount++;
             } else {
@@ -311,7 +322,7 @@ function ResolveRoundWinner(){
     play1Score.textContent = p1ScoreCount + " pts";
     if (modeVar == "vsComp"){
         play2Score.textContent = aiScoreCount + " pts";
-    } else if (modeVar == ""){
+    } else if (modeVar == "vs2p"){
         play2Score.textContent = p2ScoreCount + " pts";
     }
 }
@@ -321,34 +332,43 @@ function WinnerCheck(){
         if (p1ScoreCount == 1){
             HideStuff("gameEnd");
             winnerTxt.textContent = p1name + " Wins!";
+            gameOver = true;
         } else if (p2ScoreCount == 1){
             HideStuff("gameEnd");
             winnerTxt.textContent = p2name + " Wins!";
+            gameOver = true;
         } else if (aiScoreCount == 1){
             HideStuff("gameEnd");
             winnerTxt.textContent = ainame + " Wins!";
+            gameOver = true;
         }
     } else if (roundVar == 5){
         if (p1ScoreCount == 3){
             HideStuff("gameEnd");
             winnerTxt.textContent = p1name + " Wins!";
+            gameOver = true;
         } else if (p2ScoreCount == 3){
             HideStuff("gameEnd");
             winnerTxt.textContent = p2name + " Wins!";
+            gameOver = true;
         } else if (aiScoreCount == 3){
             HideStuff("gameEnd");
             winnerTxt.textContent = ainame + " Wins!";
+            gameOver = true;
         }
     } else if (roundVar == 7){
         if (p1ScoreCount == 4){
             HideStuff("gameEnd");
             winnerTxt.textContent = p1name + " Wins!";
+            gameOver = true;
         } else if (p2ScoreCount == 4){
             HideStuff("gameEnd");
             winnerTxt.textContent = p2name + " Wins!";
+            gameOver = true;
         } else if (aiScoreCount == 4){
             HideStuff("gameEnd");
             winnerTxt.textContent = ainame + " Wins!";
+            gameOver = true;
         }
     }
 }
@@ -360,6 +380,10 @@ function ResetVariables(type){
         p1name = "Player 1";
         p2name = "Player 2";
         ainame = "AI";
+        descriptiveTxt.textContent = "Select a game mode";
+    }
+    if (type == "soft"){
+        descriptiveTxt.textContent = "Highly logical. \"" + p1name + "\" select one of the five options above";
     }
     roundNumber = 0;
     p1ScoreCount = 0;
@@ -370,4 +394,33 @@ function ResetVariables(type){
     aiChoice = "";
     play1Score.textContent = "0 pts";
     play2Score.textContent = "0 pts";
+    gameOver = false;
+}
+
+function DescriptiveTxt(situaiton){
+    if (situaiton == "homeBtn"){
+        descriptiveTxt.textContent = "Select a game mode";
+    } else if (situaiton == "modeSelectBtn"){
+        descriptiveTxt.textContent = "Select how many rounds to play";
+    } else if (situaiton == "beginGame"){
+        descriptiveTxt.textContent = "You've selected \"Best of " + roundVar + "\" - it will take you beating your opponent " + (Math.ceil(roundVar/2)) + " times to win the game. Fascinating. \"" + p1name + "\" select one of the five options above";
+    } else if (situaiton == "optionBtn"){
+        if (modeVar == "vsComp") {
+            if (gameOver){
+                descriptiveTxt.textContent = `${p1name} chooses "${p1Choice}" and ${ainame} chooses "${aiChoice}".`;
+            } else {
+                descriptiveTxt.textContent = `${p1name} chooses "${p1Choice}" and ${ainame} chooses "${aiChoice}". Make another selection.`;
+            }
+        } else if (modeVar == "vs2p"){
+            if ((roundNumber % 2) == 1){
+                descriptiveTxt.textContent = `${p2name} select an option`
+            } else {
+                if (gameOver){
+                    descriptiveTxt.textContent = `${p1name} chooses "${p1Choice}", ${p2name} chooses "${p2Choice}".`;
+                } else {
+                    descriptiveTxt.textContent = `${p1name} chooses "${p1Choice}", ${p2name} chooses "${p2Choice}". Go another round.`;
+                }
+            }
+        }
+    }
 }
