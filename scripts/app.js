@@ -100,10 +100,10 @@ let gameOver = false;
     let loseSfx7 = new Audio('../assets/sounds/SpockUnpleasant.mp3');
 
     //sounds for winning a game in single player
-    let win1p1 = new Audio('Spock_Logic_Impeccable.mp3');
-    let win1p2 = new Audio('logic_dazzling.wav');
-    let win1p3 = new Audio('Spock_Checkmate.mp3');
-    let win1p4 = new Audio('HappySpock.mp3');
+    let win1p1 = new Audio('../assets/sounds/Spock_Logic_Impeccable.mp3');
+    let win1p2 = new Audio('../assets/sounds/logic_dazzling.wav');
+    let win1p3 = new Audio('../assets/sounds/Spock_Checkmate.mp3');
+    let win1p4 = new Audio('../assets/sounds/HappySpock.mp3');
 
     //sounds for game resolution in 2player mode
 
