@@ -656,7 +656,7 @@ function noPlayAgainSfx(){
             noPlayAgainSfx1.play();
             break;
         case 2:
-            
+            ComputerBoopSfx();
             break;
         default:
             break;
