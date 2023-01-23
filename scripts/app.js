@@ -69,52 +69,52 @@ let gameOver = false;
 
 //variables that define the game's sound library
     //computer beep sounds for generic button clicks
-    let compSound1 = new Audio('../assets/sounds/tos-computer-01.mp3');
-    let compSound2 = new Audio('../assets/sounds/tos-computer-02.mp3');
-    let compSound3 = new Audio('../assets/sounds/tos-computer-03.mp3');
-    let compSound4 = new Audio('../assets/sounds/tos-computer-04.mp3');
-    let compSound5 = new Audio('../assets/sounds/tos-computer-05.mp3');
-    let compSound6 = new Audio('../assets/sounds/tos-computer-06.mp3');
+    let compSound1 = new Audio('./assets/sounds/tos-computer-01.mp3');
+    let compSound2 = new Audio('./assets/sounds/tos-computer-02.mp3');
+    let compSound3 = new Audio('./assets/sounds/tos-computer-03.mp3');
+    let compSound4 = new Audio('./assets/sounds/tos-computer-04.mp3');
+    let compSound5 = new Audio('./assets/sounds/tos-computer-05.mp3');
+    let compSound6 = new Audio('./assets/sounds/tos-computer-06.mp3');
 
     //vsComp mode button click sounds
-    let spockComp1 = new Audio('../assets/sounds/no_ordinary_machine.wav');
-    let spockComp2 = new Audio('../assets/sounds/Computer_Error.mp3');
+    let spockComp1 = new Audio('./assets/sounds/no_ordinary_machine.wav');
+    let spockComp2 = new Audio('./assets/sounds/Computer_Error.mp3');
 
     //2player mode button click sounds
-    let spock2pAudio1 = new Audio('../assets/sounds/fascinating6.wav');
-    let spock2pAudio2 = new Audio('../assets/sounds/computer_splendid.wav');
+    let spock2pAudio1 = new Audio('./assets/sounds/fascinating6.wav');
+    let spock2pAudio2 = new Audio('./assets/sounds/computer_splendid.wav');
 
     //rules btn click sound
-    let sheldon = new Audio('../assets/sounds/Sheldon.mp3');
+    let sheldon = new Audio('./assets/sounds/Sheldon.mp3');
 
     //sounds for clicking the spock command in-game
-    let spockBtnSfx1 = new Audio('../assets/sounds/Spock_Vulcans_Never_Bluff.mp3');
+    let spockBtnSfx1 = new Audio('./assets/sounds/Spock_Vulcans_Never_Bluff.mp3');
 
     //sounds for losing a game in single player
-    let loseSfx1 = new Audio('../assets/sounds/wild_goose_pursuit.wav');
-    let loseSfx2 = new Audio('../assets/sounds/most_unpleasant.wav');
-    let loseSfx3 = new Audio('../assets/sounds/Spock_Illogical.mp3');
-    let loseSfx4 = new Audio('../assets/sounds/TwoDimensionalThinking.mp3');
-    let loseSfx5 = new Audio('../assets/sounds/Irritating.mp3');
-    let loseSfx6 = new Audio('../assets/sounds/AdolescentHands.mp3');
-    let loseSfx7 = new Audio('../assets/sounds/SpockUnpleasant.mp3');
+    let loseSfx1 = new Audio('./assets/sounds/wild_goose_pursuit.wav');
+    let loseSfx2 = new Audio('./assets/sounds/most_unpleasant.wav');
+    let loseSfx3 = new Audio('./assets/sounds/Spock_Illogical.mp3');
+    let loseSfx4 = new Audio('./assets/sounds/TwoDimensionalThinking.mp3');
+    let loseSfx5 = new Audio('./assets/sounds/Irritating.mp3');
+    let loseSfx6 = new Audio('./assets/sounds/AdolescentHands.mp3');
+    let loseSfx7 = new Audio('./assets/sounds/SpockUnpleasant.mp3');
 
     //sounds for winning a game in single player
-    let win1p1 = new Audio('../assets/sounds/Spock_Logic_Impeccable.mp3');
-    let win1p2 = new Audio('../assets/sounds/logic_dazzling.wav');
-    let win1p3 = new Audio('../assets/sounds/Spock_Checkmate.mp3');
-    let win1p4 = new Audio('../assets/sounds/HappySpock.mp3');
+    let win1p1 = new Audio('./assets/sounds/Spock_Logic_Impeccable.mp3');
+    let win1p2 = new Audio('./assets/sounds/logic_dazzling.wav');
+    let win1p3 = new Audio('./assets/sounds/Spock_Checkmate.mp3');
+    let win1p4 = new Audio('./assets/sounds/HappySpock.mp3');
 
     //sounds for game resolution in 2player mode
 
     //sounds for game start
-    let gameStartSfx = new Audio('../assets/sounds/greetings.wav');
+    let gameStartSfx = new Audio('./assets/sounds/greetings.wav');
 
     //sounds for choosing not to play again
-    let noPlayAgainSfx1 = new Audio('../assets/sounds/Spock_Livelong.mp3');
+    let noPlayAgainSfx1 = new Audio('./assets/sounds/Spock_Livelong.mp3');
 
     //sounds for choosing to play again
-    let PlayAgainSfx1 = new Audio('../assets/sounds/SpockDelighted.mp3');
+    let PlayAgainSfx1 = new Audio('./assets/sounds/SpockDelighted.mp3');
 
     
 
